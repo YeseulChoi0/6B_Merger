@@ -28,6 +28,30 @@ public class Merger {
       , int nItems  // number of items in the merged list
                     // = just past end of list1
       ) {
+        ArrayList<String> sortedRegion = new ArrayList<String>();
+        int index0 = start0;
+        int index1 = start1;
+        while (index0 < start1 && index1 < nItems){
+          if (usersData.get(index0).compareTo(usersData.get(index1)) <= 0){
+            sortedRegion.add(usersData.get(index0));
+            index0++;
+          }else{
+            sortedRegion.add(usersData.get(index1));
+            index1++;
+          }
+          //System.out.println("" + sortedRegion);
+        }
+        while (index0 < start1){
+          sortedRegion.add(usersData.get(index0));
+          index0++;
+        }while (index1 < nItems){
+          sortedRegion.add(usersData.get(index1));
+          index1++;
+        }
+        //System.out.println("" + sortedRegion);
+        for(int i = start0; i < nItems; i++){
+          usersData.set(i, sortedRegion.remove(0));
+        }
     }
 
 
@@ -35,11 +59,11 @@ public class Merger {
       @return a string representation of the user's data
      */
     public String toString() {
-        return "" + usersData; 
+        return "" + usersData;
     }
 
-    
-    /** 
+
+    /**
       @return the boolean value of the statement
          "the data in the range are in ascending order"
      */
@@ -47,8 +71,12 @@ public class Merger {
         for( int i = startAt
            ; i < endBefore -1 // stop early, because comparing to next
            ; i++
-           )
+           ){
+           System.out.println(usersData.get(i));
+           System.out.println(usersData.get(i+1));
+           System.out.println(usersData.get(i).compareTo(usersData.get(i+1)));
             if( usersData.get(i).compareTo( usersData.get(i+1)) > 0) return false;
-        return true;
+      }
+      return true;
     }
 }

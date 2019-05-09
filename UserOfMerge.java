@@ -1,11 +1,11 @@
 /**
-  
+
  */
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class UserOfMerge {
-    
+
     public static void main(String[] commandLine) {
         ArrayList< String> cards = new ArrayList< String>(
           /* Java's Arrays.asList provides a perspicuous
@@ -14,13 +14,13 @@ public class UserOfMerge {
           Arrays.asList(
               // data to be ignored; see README
               "z", "y"  // descending order
-              
+
               // one sorted sub-list
             , "4", "5", "6", "9"
 
               // the other sorted sub-list
             , "2", "3", "4", "6", "7", "J", "Q", "K"
-            
+
               // more data to be ignored
             , "-", "+", "*"  // descending order
             ));
@@ -29,8 +29,8 @@ public class UserOfMerge {
                , cards, 2, 6, 14 );
     }
 
-    
-    /** 
+
+    /**
      Run one test
      */
     private static void oneTest(
@@ -47,7 +47,7 @@ public class UserOfMerge {
 
         Merger merger = new Merger( mergeMe);
 
-        System.out.println( 
+        System.out.println(
             System.lineSeparator()
           + description + System.lineSeparator()
           + "before: " + merger
@@ -58,6 +58,6 @@ public class UserOfMerge {
             "sorted: "
           + merger.isSorted( start0, nItems));
      }
-    
+
 
 }
