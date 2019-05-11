@@ -19,14 +19,35 @@ public class UserOfMerge {
             , "4", "5", "6", "9"
 
               // the other sorted sub-list
-            , "2", "3", "4", "6", "7", "J", "Q", "K"
+            , "2", "3", "4", "6", "7", "J", "K", "Q"
 
               // more data to be ignored
             , "-", "+", "*"  // descending order
             ));
 
+        ArrayList<String> cards0 = new ArrayList<String>(
+          /* Java's Arrays.asList provides a perspicuous
+             way to build a Collection from literals,
+             suitable for constructing an ArrayList */
+          Arrays.asList(
+              // data to be ignored; see README
+              "z", "y"  // descending order
+
+              // one sorted sub-list
+            , "4", "5", "6", "9"
+
+              // the other sorted sub-list
+            , "2", "3", "4", "6", "7", "J", "K", "Q"
+
+              // more data to be ignored
+            , "-", "+", "*"  // descending order
+            ));
+        
+
         oneTest( "card decks"
                , cards, 2, 6, 14 );
+
+        mergeSortTest("testing mergeSort", cards0, 2, 14);
     }
 
 
@@ -58,6 +79,29 @@ public class UserOfMerge {
             "sorted: "
           + merger.isSorted( start0, nItems));
      }
+
+     private static void mergeSortTest(
+       String description
+     , ArrayList<String> mergeMe
+       // indexes of sub-list boundaries; see README
+     , int low  // index of first item in list0
+     , int high  // upper bound
+                   // = just past end of "must be sorted region"
+                              ) {
+        Merger merger = new Merger(mergeMe);
+
+        System.out.println(
+            System.lineSeparator()
+          + description + System.lineSeparator()
+          + "before: " + merger
+          );
+        merger.mergeSort(low, high);
+        System.out.println( "after:  " + merger);
+        System.out.println(
+            "sorted: "
+          + merger.isSorted( low, high));
+      }
+
 
 
 }

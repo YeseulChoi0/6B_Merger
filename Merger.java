@@ -16,6 +16,19 @@ public class Merger {
         usersData = list;
     }
 
+    public void mergeSort(int low, int high){
+      if (high - low <= 1){ // boolean expression
+        return; // solution to the base case
+      }else{
+        //solution to the recursive case
+        int middle = (low + high)/2;
+        mergeSort(low, middle); //recursive abstraction
+        mergeSort(middle, high); //recursive abstraction
+        merge(low, middle, high); //combiner
+        //leftover processing --> none
+      }
+    }
+
 
     /**
       Merge the sorted sub-lists.
